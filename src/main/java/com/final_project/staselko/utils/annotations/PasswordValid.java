@@ -1,4 +1,4 @@
-package com.final_project.staselko.utils.valid;
+package com.final_project.staselko.utils.annotations;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -11,10 +11,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({ FIELD })
 @Retention(RUNTIME)
-@Constraint(validatedBy = MailValidator.class)
+@Constraint(validatedBy = PasswordValidator.class)
 @Documented
-public @interface EmailIsValid {
-    String message() default "Please make sure you are using a valid email";
+public @interface PasswordValid {
+    String message() default "Please make sure you are using a valid password";
 
     Class<?>[] groups() default { };
 

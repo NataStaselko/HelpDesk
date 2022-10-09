@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 
 @Data
@@ -20,9 +20,8 @@ public class Comment implements Serializable{
     @Column(name = "TEXT")
     private String text;
 
-    @Temporal(TemporalType.TIME)
     @Column(name = "DATE")
-    private Date data;
+    private LocalDateTime data = LocalDateTime.now();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")

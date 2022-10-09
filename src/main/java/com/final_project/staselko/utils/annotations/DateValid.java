@@ -1,4 +1,4 @@
-package com.final_project.staselko.utils.valid;
+package com.final_project.staselko.utils.annotations;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -11,10 +11,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({ FIELD })
 @Retention(RUNTIME)
-@Constraint(validatedBy = PasswordValidator.class)
+@Constraint(validatedBy = DateValidator.class)
 @Documented
-public @interface PasswordValid {
-    String message() default "Please make sure you are using a valid password";
+public @interface DateValid {
+    String message() default "The desired date cannot be in the past";
 
     Class<?>[] groups() default { };
 

@@ -1,9 +1,9 @@
-package com.final_project.staselko.utils.valid;
+package com.final_project.staselko.utils.annotations;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class MailValidator implements ConstraintValidator<EmailIsValid, String> {
+public class EmailValidator implements ConstraintValidator<EmailValid, String> {
     @Override
     public boolean isValid(String value, ConstraintValidatorContext constraintValidatorContext) {
 

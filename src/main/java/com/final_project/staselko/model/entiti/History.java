@@ -3,7 +3,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 
 @Data
@@ -16,9 +16,8 @@ public class History implements Serializable{
     @Column(name = "ID", nullable = false, updatable = false)
     private Long id;
 
-    @Temporal(TemporalType.TIME)
     @Column(name = "DATE")
-    private Date date;
+    private LocalDateTime date = LocalDateTime.now();
 
     @Column(name = "ACTION")
     private String action;

@@ -6,8 +6,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -25,13 +25,11 @@ public class Ticket implements Serializable {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @Temporal(TemporalType.TIME)
     @Column(name = "CREATED_ON")
-    private Date created_on;
+    private LocalDate created_on = LocalDate.now();
 
-    @Temporal(TemporalType.TIME)
     @Column(name = "DESIRED_RESOLUTION_DATE")
-    private Date desired_resolution_date;
+    private LocalDate desired_resolution_date;
 
     @Column(name = "STATE_ID")
     private State state_id;

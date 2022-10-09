@@ -2,7 +2,7 @@ package com.final_project.staselko.model.entiti;
 import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -17,9 +17,8 @@ public class Feedback implements Serializable {
     @Column(name = "RATE")
     private int rate;
 
-    @Temporal(TemporalType.TIME)
     @Column(name = "Date")
-    private Date date;
+    private LocalDateTime date = LocalDateTime.now();
 
     @Column(name = "TEXT")
     private String text;
