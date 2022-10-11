@@ -9,9 +9,8 @@ public class PasswordValidator implements ConstraintValidator<PasswordValid, Str
         if (value.matches(".*[A-Z].*")
                 && value.matches(".*[a-z].*")
                 && value.matches(".*[0-9].*")
-                && value.matches(".*[~.\"(),:;<>@!#$%&'*+-/=?^_`{|}].*")
-                && value.length() >= 6
-                && value.length() <= 20) {
+                && value.matches(".*[~.\"(),:;\\[\\]<>@!#$%&'*+-/=?^_`{|}].*")
+                && value.matches("^.{6,20}$")) {
             return true;
         }
         return false;

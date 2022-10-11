@@ -1,17 +1,17 @@
 package com.final_project.staselko.model.enums;
 
 public enum Urgency {
-    CRITICAL("C"),
-    HIGH("H"),
-    AVERAGE("A"),
-    LOW("L");
+    CRITICAL(1),
+    HIGH(2),
+    AVERAGE(3),
+    LOW(4);
 
-    private String code;
+    private Integer code;
 
-    private Urgency(String code) {
+    private Urgency(Integer code) {
         this.code = code;
     }
-    public String getCode() {
+    public Integer getCode() {
         return code;
     }
 }

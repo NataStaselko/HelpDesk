@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,5 +32,18 @@ public class ExceptionController {
                 .map(error -> new AppError(error.getField(), error.getDefaultMessage()))
                 .collect(Collectors.toList());
         return new ValidationError(errors);
+    }
+
+    @ExceptionHandler(DateTimeParseException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public AppError catchValidExceptions(DateTimeParseException exception) {
+        return new AppError(exception.getParsedString(), "The date format error");
+    }
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public AppError catchValidExceptions(IllegalArgumentException exception) {
+        return new AppError(exception.getMessage());
     }
 }
