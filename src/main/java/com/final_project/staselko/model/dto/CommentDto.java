@@ -1,5 +1,6 @@
 package com.final_project.staselko.model.dto;
 
+import com.final_project.staselko.model.entiti.Ticket;
 import com.final_project.staselko.utils.annotations.TextValid;
 import lombok.Data;
 
@@ -11,7 +12,7 @@ public class CommentDto {
     @TextValid
     @Size(max = 500, message = "the text exceed the 500 character limit")
     private String text;
-
     private String date;
-
+    private UserDto userDto;
+    private Ticket ticket;
 }

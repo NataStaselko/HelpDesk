@@ -3,10 +3,12 @@ package com.final_project.staselko.converter.dto.impl;
 import com.final_project.staselko.converter.dto.HistoryConverter;
 import com.final_project.staselko.model.dto.HistoryDto;
 import com.final_project.staselko.model.entiti.History;
+import org.springframework.stereotype.Component;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+@Component
 public class HistoryConverterImpl implements HistoryConverter {
 
     @Override

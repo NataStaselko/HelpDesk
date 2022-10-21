@@ -1,21 +1,21 @@
 package com.final_project.staselko.model.enums;
 
 public enum State {
-    DRAFT("DR"),
-    NEW("NW"),
-    APPROVED("AP"),
-    DECLINED("DC"),
-    IN_PROGRESS("PR"),
-    DONE("DN"),
-    CANCELED("CN");
+    DRAFT(1),
+    NEW(2),
+    APPROVED(3),
+    DECLINED(4),
+    IN_PROGRESS(5),
+    DONE(6),
+    CANCELED(7);
 
-    private String code;
+    private Integer code;
 
-    private State(String code) {
+    private State(Integer code) {
         this.code = code;
     }
 
-    public String getCode() {
+    public Integer getCode() {
         return code;
     }
 }

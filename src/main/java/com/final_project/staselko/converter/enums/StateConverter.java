@@ -1,14 +1,16 @@
 package com.final_project.staselko.converter.enums;
 import com.final_project.staselko.model.enums.State;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 import java.util.stream.Stream;
 
+@Component
 @Converter(autoApply = true)
-public class StateConverter implements AttributeConverter<State, String> {
+public class StateConverter implements AttributeConverter<State, Integer> {
     @Override
-    public String convertToDatabaseColumn(State state) {
+    public Integer convertToDatabaseColumn(State state) {
         if (state == null) {
             return null;
         }
@@ -16,7 +18,7 @@ public class StateConverter implements AttributeConverter<State, String> {
     }
 
     @Override
-    public State convertToEntityAttribute(String code) {
+    public State convertToEntityAttribute(Integer code) {
         if (code == null) {
             return null;
         }

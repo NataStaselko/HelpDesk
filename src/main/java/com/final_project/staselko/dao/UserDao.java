@@ -1,11 +1,11 @@
 package com.final_project.staselko.dao;
 
 import com.final_project.staselko.model.entiti.User;
+import org.springframework.expression.spel.ast.OpAnd;
 
-import javax.persistence.criteria.Expression;
+import java.util.Optional;
 
 
 public interface UserDao {
-    User getUserByName();
-
+    Optional<User> getUserByEmail(String value);
 }

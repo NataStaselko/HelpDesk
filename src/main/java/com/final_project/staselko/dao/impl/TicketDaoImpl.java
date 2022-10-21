@@ -13,7 +13,8 @@ public class TicketDaoImpl extends HibernateDao<Ticket> implements TicketDao {
     }
 
     @Override
-    public void saveTicket(Ticket ticket) {
+    public Ticket saveTicket(Ticket ticket) {
         create(ticket);
+        return ticket;
     }
 }

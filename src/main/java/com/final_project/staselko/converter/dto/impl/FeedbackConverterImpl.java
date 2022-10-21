@@ -3,10 +3,12 @@ package com.final_project.staselko.converter.dto.impl;
 import com.final_project.staselko.converter.dto.FeedbackConverter;
 import com.final_project.staselko.model.dto.FeedbackDto;
 import com.final_project.staselko.model.entiti.Feedback;
+import org.springframework.stereotype.Component;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+@Component
 public class FeedbackConverterImpl implements FeedbackConverter {
     @Override
     public Feedback toFeedback(FeedbackDto feedbackDto) {

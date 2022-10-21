@@ -1,16 +1,16 @@
 package com.final_project.staselko.model.enums;
 
 public enum Role {
-    EMPLOYEE("E"),
-    MANAGER("M"),
-    ENGINEER("A");
-    private String code;
+    EMPLOYEE(0),
+    MANAGER(1),
+    ENGINEER(2);
+    private Integer code;
 
-    private Role(String code) {
+    private Role(Integer code) {
         this.code = code;
     }
 
-    public String getCode() {
+    public Integer getCode() {
         return code;
     }
 }

@@ -1,5 +1,7 @@
 package com.final_project.staselko.model.entiti;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.final_project.staselko.model.enums.Role;
 import lombok.Data;
 
@@ -23,7 +25,7 @@ public class User implements Serializable {
 
     @Column(name = "LAST_NAME")
     private String last_name;
-
+    @JsonIgnore
     @Column(name = "ROLE_ID")
     private Role role_id;
 
@@ -33,21 +35,27 @@ public class User implements Serializable {
     @Column(name = "PASSWORD")
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Feedback> feedbacks = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> comments = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<History> histories = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "engineer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ticket> tickets_eng = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ticket> tickets_owner = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ticket> tickets_man = new ArrayList<>();
 
@@ -59,7 +67,7 @@ public class User implements Serializable {
         return getRole_id() == Role.MANAGER ? true : false;
     }
 
-    public boolean isEngineer(){
+    public boolean isEngineer() {
         return getRole_id() == Role.ENGINEER ? true : false;
     }
 }

@@ -1,21 +1,23 @@
-package com.final_project.staselko.controllers;
+package com.final_project.staselko.controllers.exceptions;
 
 import com.final_project.staselko.model.exception.AppError;
 import com.final_project.staselko.model.exception.ValidationError;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import com.final_project.staselko.utils.exceptions.UserNotFoundEmailException;
 
+import org.springframework.http.HttpStatus;
+
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import javax.persistence.NoResultException;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
-@ControllerAdvice
-public class ExceptionController {
+@RestControllerAdvice
+public class ExceptionController{
 
    /* @ResponseBody
     @ExceptionHandler(RuntimeException.class)
@@ -46,4 +48,11 @@ public class ExceptionController {
     public AppError catchValidExceptions(IllegalArgumentException exception) {
         return new AppError(exception.getMessage());
     }
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public AppError notFound(RuntimeException exception) {
+        return new AppError(exception.getMessage(), "User not found");
+    }
+
 }

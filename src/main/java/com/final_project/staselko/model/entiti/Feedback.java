@@ -1,4 +1,5 @@
 package com.final_project.staselko.model.entiti;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;

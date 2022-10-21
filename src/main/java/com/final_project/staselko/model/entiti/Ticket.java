@@ -1,18 +1,22 @@
 package com.final_project.staselko.model.entiti;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.final_project.staselko.model.enums.State;
 import com.final_project.staselko.model.enums.Urgency;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "TICKETS")
+@NoArgsConstructor
 public class Ticket implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "Tickets_id")
@@ -26,7 +30,7 @@ public class Ticket implements Serializable {
     private String description;
 
     @Column(name = "CREATED_ON")
-    private LocalDate created_on = LocalDate.now();
+    private LocalDateTime created_on = LocalDateTime.now();
 
     @Column(name = "DESIRED_RESOLUTION_DATE")
     private LocalDate desired_resolution_date;
@@ -41,13 +45,16 @@ public class Ticket implements Serializable {
     @JoinColumn(name = "CATEGORY_ID")
     private Category category;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ASSIGNEE_ID")
     private User engineer;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "OWNER_ID")
     private User owner;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "APPROVER_ID")
@@ -65,4 +72,9 @@ public class Ticket implements Serializable {
     @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Attachment> attachments = new ArrayList<>();
 
+    public Ticket(String name, String description, LocalDate desired_resolution_date) {
+        this.name = name;
+        this.description = description;
+        this.desired_resolution_date = desired_resolution_date;
+    }
 }
