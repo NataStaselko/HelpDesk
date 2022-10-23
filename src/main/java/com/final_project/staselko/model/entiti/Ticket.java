@@ -41,22 +41,22 @@ public class Ticket implements Serializable {
     @Column(name = "URGENCY_ID")
     private Urgency urgency_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CATEGORY_ID")
     private Category category;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "ASSIGNEE_ID")
     private User engineer;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "OWNER_ID")
     private User owner;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "APPROVER_ID")
     private User manager;
 

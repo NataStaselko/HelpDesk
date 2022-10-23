@@ -10,6 +10,8 @@ import javax.validation.constraints.NotEmpty;
 @Data
 public class UserDto {
 
+    private Long id;
+
     @NotEmpty(message = "the first_name cannot be empty")
     private String first_name;
 

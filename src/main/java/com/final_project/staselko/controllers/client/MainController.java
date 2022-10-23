@@ -1,5 +1,6 @@
 package com.final_project.staselko.controllers.client;
 
+import com.final_project.staselko.model.dto.TicketDto;
 import com.final_project.staselko.servise.client.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
@@ -13,7 +14,7 @@ public class MainController {
 
     private final ClientService clientService;
 
-    @PostMapping("/create")
+    @PostMapping("/create_ticket")
     public ResponseEntity<Void> createTicketDraft(@RequestPart(required = false) String description,
                                                   @RequestPart(required = false) String desired_resolution_date,
                                                   @RequestPart(required = false) String name,
@@ -23,6 +24,11 @@ public class MainController {
                                                   @RequestPart String category) throws InterruptedException {
         clientService.createTicket(description, desired_resolution_date, name, text, urgency, state, category);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping("/show_ticket/{id}")
+    public ResponseEntity<TicketDto> showTicket(@PathVariable final Long id){
+        return clientService.showTicket(id);
     }
 
 }

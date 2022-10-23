@@ -1,8 +1,6 @@
 package com.final_project.staselko.model.dto;
 
 import com.final_project.staselko.model.entiti.Category;
-import com.final_project.staselko.model.entiti.User;
-import com.final_project.staselko.model.enums.Urgency;
 import com.final_project.staselko.utils.annotations.DateValid;
 import com.final_project.staselko.utils.annotations.TextValid;
 import lombok.AllArgsConstructor;
@@ -16,6 +14,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TicketDto {
+    private Long id;
 
     @TextValid
     @Size(max = 100, message = "the name exceed the 100 character limit")
@@ -37,6 +36,6 @@ public class TicketDto {
     //@NotEmpty(message = "the urgency cannot be empty")
     private String urgency;
     private String state;
-    private User owner;
+    private UserDto owner;
 
 }

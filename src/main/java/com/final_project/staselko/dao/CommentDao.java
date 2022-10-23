@@ -2,9 +2,10 @@ package com.final_project.staselko.dao;
 
 import com.final_project.staselko.model.entiti.Comment;
 
+import java.util.Optional;
+
 public interface CommentDao {
     Comment saveCat(Comment comment);
-    Comment getCommentById (Long comment_id);
+    Optional <Comment> getCommentById (Long commentId);
 
-   // List<CommentDto> getAllCommentsByUser(Role role);
 }

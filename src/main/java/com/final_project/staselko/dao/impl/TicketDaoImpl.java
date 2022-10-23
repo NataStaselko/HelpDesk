@@ -5,6 +5,8 @@ import com.final_project.staselko.dao.TicketDao;
 import com.final_project.staselko.model.entiti.Ticket;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public class TicketDaoImpl extends HibernateDao<Ticket> implements TicketDao {
 
@@ -16,5 +18,15 @@ public class TicketDaoImpl extends HibernateDao<Ticket> implements TicketDao {
     public Ticket saveTicket(Ticket ticket) {
         create(ticket);
         return ticket;
+    }
+
+    @Override
+    public Optional<Ticket> getTicketById(Long ticketId) {
+        return findById(ticketId);
+    }
+
+    @Override
+    public void updateTicket(Ticket ticket) {
+        update(ticket);
     }
 }

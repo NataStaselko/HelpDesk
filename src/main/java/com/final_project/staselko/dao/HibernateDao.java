@@ -15,6 +15,7 @@ import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 public abstract class HibernateDao<T extends Serializable> {
@@ -32,8 +33,10 @@ public abstract class HibernateDao<T extends Serializable> {
         this.modelClass = modelToSet;
     }
 
-    public T findById(final long id) {
-        return (T) getCurrentSession().get(modelClass, id);
+    public Optional<T> findById(final long id) {
+        Optional<T> entiti = Optional.empty();
+        entiti = Optional.ofNullable(getCurrentSession().get(modelClass, id));
+        return entiti;
     }
 
     public List<T> findAll() {

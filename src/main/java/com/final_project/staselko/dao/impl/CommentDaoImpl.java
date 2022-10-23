@@ -5,6 +5,8 @@ import com.final_project.staselko.dao.HibernateDao;
 import com.final_project.staselko.model.entiti.Comment;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public class CommentDaoImpl extends HibernateDao<Comment> implements CommentDao {
     public CommentDaoImpl() {
@@ -18,7 +20,7 @@ public class CommentDaoImpl extends HibernateDao<Comment> implements CommentDao 
     }
 
     @Override
-    public Comment getCommentById(Long comment_id) {
-        return findById(comment_id);
+    public Optional<Comment> getCommentById(Long commentId) {
+        return findById(commentId);
     }
 }

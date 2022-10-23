@@ -17,8 +17,6 @@ public class CommentServiceImpl implements CommentService {
 
     private final CommentDao commentDao;
     private final CommentConverter commentConverter;
-    private final UserProvider userProvider;
-
 
 
     @Override
@@ -30,7 +28,8 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     @Transactional
-    public CommentDto getCommentById(Long comment_id) {
-        return commentConverter.toCommentDto(commentDao.getCommentById(comment_id));
+    public CommentDto getCommentById(Long commentId) {
+        return commentConverter.toCommentDto(commentDao.getCommentById(commentId)
+                .orElseThrow(() -> new RuntimeException("ticket not found with id " + commentId)));
     }
 }
