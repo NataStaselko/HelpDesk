@@ -1,7 +1,6 @@
 package com.final_project.staselko.controllers.server;
-
 import com.final_project.staselko.model.dto.UserDto;
-import com.final_project.staselko.servise.UserService;
+import com.final_project.staselko.servise.entiti.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

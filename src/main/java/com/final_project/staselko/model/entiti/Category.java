@@ -1,5 +1,6 @@
 package com.final_project.staselko.model.entiti;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 
@@ -21,6 +22,7 @@ public class Category implements Serializable {
     @Column(name = "NAME", length = 100)
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ticket> tickets = new ArrayList<>();
 }

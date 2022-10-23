@@ -1,11 +1,10 @@
-package com.final_project.staselko.servise.impl;
+package com.final_project.staselko.servise.entiti.impl;
 
 import com.final_project.staselko.converter.dto.UserConverter;
 import com.final_project.staselko.dao.UserDao;
 import com.final_project.staselko.model.dto.UserDto;
-import com.final_project.staselko.servise.UserService;
+import com.final_project.staselko.servise.entiti.UserService;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

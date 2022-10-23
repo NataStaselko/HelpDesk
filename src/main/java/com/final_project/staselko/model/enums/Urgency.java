@@ -3,7 +3,7 @@ package com.final_project.staselko.model.enums;
 public enum Urgency {
     CRITICAL(0),
     HIGH(1),
-    AVERAGE(5),
+    AVERAGE(2),
     LOW(3);
 
     private Integer code;

@@ -1,6 +1,7 @@
 package com.final_project.staselko.converter.dto.impl;
 
 import com.final_project.staselko.converter.dto.TicketConverter;
+import com.final_project.staselko.converter.enums.StateConverter;
 import com.final_project.staselko.converter.enums.UngencyConverter;
 import com.final_project.staselko.model.dto.TicketDto;
 import com.final_project.staselko.model.entiti.Ticket;
@@ -16,6 +17,7 @@ import java.util.Locale;
 public class TicketConverterImpl implements TicketConverter {
 
     private final UngencyConverter ungencyConverter;
+    private final StateConverter stateConverter;
 
     @Override
     public Ticket toTicket(TicketDto ticketDto) {
@@ -25,8 +27,10 @@ public class TicketConverterImpl implements TicketConverter {
         ticket.setDesired_resolution_date(LocalDate.
                 parse(ticketDto.getDesired_resolution_date(),
                         DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-       // ticket.setCategory(ticketDto.getCategory());
-        //ticket.setUrgency_id(ungencyConverter.convertToEntityAttribute(Integer.parseInt(ticketDto.getUrgency())));
+        ticket.setOwner(ticketDto.getOwner());
+        ticket.setCategory(ticketDto.getCategory());
+        ticket.setUrgency_id(ungencyConverter.convertToEntityAttribute(Integer.parseInt(ticketDto.getUrgency())));
+        ticket.setState_id(stateConverter.convertToEntityAttribute(Integer.parseInt(ticketDto.getState())));
         return ticket;
     }
 
@@ -39,8 +43,9 @@ public class TicketConverterImpl implements TicketConverter {
         ticketDto.setCreated_on(ticket.getCreated_on()
                 .format(DateTimeFormatter.ofPattern("MMM dd, yyyy HH:mm:ss").localizedBy(Locale.ENGLISH)));
         ticketDto.setDescription(ticket.getDescription());
-       // ticketDto.setCategory(ticket.getCategory());
-       // ticketDto.setUrgency(ticket.getUrgency_id().toString());
+        ticketDto.setCategory(ticket.getCategory());
+        ticketDto.setUrgency(ticket.getUrgency_id().toString());
+        ticketDto.setState(ticket.getState_id().toString());
         ticketDto.setOwner(ticket.getOwner());
         return ticketDto;
     }

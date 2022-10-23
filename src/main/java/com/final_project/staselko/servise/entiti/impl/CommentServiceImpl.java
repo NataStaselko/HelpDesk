@@ -1,10 +1,10 @@
-package com.final_project.staselko.servise.impl;
+package com.final_project.staselko.servise.entiti.impl;
 
 import com.final_project.staselko.converter.dto.CommentConverter;
 import com.final_project.staselko.dao.CommentDao;
 import com.final_project.staselko.model.dto.CommentDto;
 import com.final_project.staselko.model.entiti.Comment;
-import com.final_project.staselko.servise.CommentService;
+import com.final_project.staselko.servise.entiti.CommentService;
 import com.final_project.staselko.utils.entiti.UserProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,6 +29,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    @Transactional
     public CommentDto getCommentById(Long comment_id) {
         return commentConverter.toCommentDto(commentDao.getCommentById(comment_id));
     }

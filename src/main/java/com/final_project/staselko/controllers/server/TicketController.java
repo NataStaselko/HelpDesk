@@ -3,7 +3,7 @@ package com.final_project.staselko.controllers.server;
 import com.final_project.staselko.converter.dto.TicketConverter;
 import com.final_project.staselko.model.dto.TicketDto;
 import com.final_project.staselko.model.entiti.Ticket;
-import com.final_project.staselko.servise.TicketService;
+import com.final_project.staselko.servise.entiti.TicketService;
 import com.final_project.staselko.utils.entiti.UserProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

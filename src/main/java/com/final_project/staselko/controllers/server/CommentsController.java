@@ -2,7 +2,7 @@ package com.final_project.staselko.controllers.server;
 
 import com.final_project.staselko.model.dto.CommentDto;
 import com.final_project.staselko.model.entiti.Comment;
-import com.final_project.staselko.servise.CommentService;
+import com.final_project.staselko.servise.entiti.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +18,8 @@ public class CommentsController {
     private final CommentService commentService;
 
     @PostMapping
-    public Comment save(@Valid @RequestBody Comment comment) {
-        return commentService.saveCat(comment);
+    public void save(@RequestBody Comment comment) {
+       commentService.saveCat(comment);
     }
 
     @GetMapping("{id}")

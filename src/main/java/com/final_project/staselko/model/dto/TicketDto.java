@@ -36,7 +36,7 @@ public class TicketDto {
 
     //@NotEmpty(message = "the urgency cannot be empty")
     private String urgency;
-
+    private String state;
     private User owner;
 
 }

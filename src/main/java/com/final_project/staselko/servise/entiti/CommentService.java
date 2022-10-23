@@ -1,4 +1,4 @@
-package com.final_project.staselko.servise;
+package com.final_project.staselko.servise.entiti;
 import com.final_project.staselko.model.dto.CommentDto;
 import com.final_project.staselko.model.entiti.Comment;
 

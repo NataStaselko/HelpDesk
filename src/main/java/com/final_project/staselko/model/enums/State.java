@@ -1,13 +1,13 @@
 package com.final_project.staselko.model.enums;
 
 public enum State {
-    DRAFT(1),
-    NEW(2),
-    APPROVED(3),
-    DECLINED(4),
-    IN_PROGRESS(5),
-    DONE(6),
-    CANCELED(7);
+    DRAFT(0),
+    NEW(1),
+    APPROVED(2),
+    DECLINED(3),
+    IN_PROGRESS(4),
+    DONE(5),
+    CANCELED(6);
 
     private Integer code;
 

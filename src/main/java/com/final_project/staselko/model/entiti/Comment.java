@@ -1,5 +1,6 @@
 package com.final_project.staselko.model.entiti;
 
+import com.final_project.staselko.utils.annotations.TextValid;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,13 +11,14 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "COMMENTS")
-public class Comment implements Serializable{
+public class Comment implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "Comments_id")
     @Column(name = "ID", nullable = false, updatable = false)
     private Long id;
 
+    @TextValid
     @Column(name = "TEXT")
     private String text;
 

@@ -10,7 +10,7 @@ public class DateValidator implements ConstraintValidator<DateValid, String> {
     public boolean isValid(String value, ConstraintValidatorContext constraintValidatorContext) {
         LocalDate desiredDate = LocalDate.parse(value, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         LocalDate date = LocalDate.now();
-        if (date.isBefore(desiredDate) || date.isEqual(desiredDate)) {
+        if (date.isBefore(desiredDate) || date.isEqual(desiredDate) || value.length() == 0) {
             return true;
         }
         return false;
