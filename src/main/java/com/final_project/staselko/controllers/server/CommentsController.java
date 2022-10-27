@@ -3,9 +3,8 @@ package com.final_project.staselko.controllers.server;
 import com.final_project.staselko.model.dto.CommentDto;
 import com.final_project.staselko.model.entiti.Comment;
 import com.final_project.staselko.servise.entiti.CommentService;
+import com.final_project.staselko.utils.entiti.ObjectList;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -18,13 +17,21 @@ public class CommentsController {
     private final CommentService commentService;
 
     @PostMapping
-    public void save(@RequestBody Comment comment) {
+    public void save(@Valid @RequestBody Comment comment) {
        commentService.saveCat(comment);
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<CommentDto> getCommentById(@PathVariable(value = "id") long id){
-        CommentDto commentDto = commentService.getCommentById(id);
-        return ResponseEntity.status(HttpStatus.OK).body(commentDto);
+    @PutMapping("/{id}")
+    public void updateComment(@PathVariable(value = "id") long id,
+                              @RequestBody Comment comment){
+        commentService.updateComment(id, comment);
     }
+
+    @GetMapping
+    public ObjectList<CommentDto> getCommentByTicket(Long ticket_id){
+        ObjectList<CommentDto> objectList = new ObjectList<>();
+        objectList.setTicketsDto(commentService.getCommentsByTicket(ticket_id));
+        return objectList;
+    }
+
 }

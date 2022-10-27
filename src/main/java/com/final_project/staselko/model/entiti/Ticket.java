@@ -1,6 +1,7 @@
 package com.final_project.staselko.model.entiti;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.final_project.staselko.model.enums.State;
 import com.final_project.staselko.model.enums.Urgency;
 import lombok.Data;
@@ -11,13 +12,14 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "TICKETS")
 @NoArgsConstructor
-public class Ticket implements Serializable {
+public class Ticket implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "Tickets_id")
     @Column(name = "ID", nullable = false, updatable = false)
@@ -60,15 +62,19 @@ public class Ticket implements Serializable {
     @JoinColumn(name = "APPROVER_ID")
     private User manager;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Feedback> feedbacks = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> comments = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<History> histories = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Attachment> attachments = new ArrayList<>();
 

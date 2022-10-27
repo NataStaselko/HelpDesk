@@ -11,8 +11,4 @@ public class ParamCreator {
     public String getParamToDB(String str){
         return str.replace("+", " ").replace("%26", "&");
     }
-
-    public Long getParamLongToDB(String str){
-        return Long.parseLong(str);
-    }
 }

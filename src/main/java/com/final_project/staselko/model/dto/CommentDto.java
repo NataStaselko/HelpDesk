@@ -12,7 +12,6 @@ public class CommentDto {
     @TextValid
     @Size(max = 500, message = "the text exceed the 500 character limit")
     private String text;
+    private Long id;
     private String date;
-    private UserDto userDto;
-    private Ticket ticket;
 }

@@ -17,19 +17,18 @@ public class CommentConverterImpl implements CommentConverter {
     @Override
     public Comment toComment(CommentDto commentDto) {
         Comment comment = new Comment();
+        comment.setId(commentDto.getId());
         comment.setText(commentDto.getText());
-        comment.setTicket(commentDto.getTicket());
         return comment;
     }
 
     @Override
     public CommentDto toCommentDto(Comment comment) {
         CommentDto commentDto = new CommentDto();
+        commentDto.setId(comment.getId());
         commentDto.setText(comment.getText());
         commentDto.setDate(comment.getData().format(DateTimeFormatter
                 .ofPattern("MMM dd, yyyy HH:mm:ss").localizedBy(Locale.ENGLISH)));
-        commentDto.setUserDto(userConverter.toUserDto(comment.getUser()));
-        commentDto.setTicket(comment.getTicket());
         return commentDto;
     }
 }

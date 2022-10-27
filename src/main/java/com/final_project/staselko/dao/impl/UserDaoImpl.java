@@ -16,8 +16,11 @@ public class UserDaoImpl extends HibernateDao<User> implements UserDao {
 
     @Override
     public Optional<User> getUserByEmail(String value) {
-        Optional<User> user = Optional.empty();
-        user = Optional.ofNullable(getByStringParam("email", value));
-        return user;
+        return Optional.ofNullable(getByParam("email", value));
+    }
+
+    @Override
+    public Optional<User> getUserById(Long id) {
+        return findById(id);
     }
 }

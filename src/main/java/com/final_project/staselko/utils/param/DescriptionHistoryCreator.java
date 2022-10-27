@@ -15,7 +15,6 @@ public class DescriptionHistoryCreator {
     public String actionEdit(){
         return "Ticket is edited";
     }
-
     public String descriptionEdit(){
         return "Ticket is edited";
     }

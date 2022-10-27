@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -32,6 +34,7 @@ public class TicketDto {
 
    // @NotEmpty(message = "the category cannot be empty")
     private Category category;
+    private List<CommentDto> comment = new ArrayList<>();
 
     //@NotEmpty(message = "the urgency cannot be empty")
     private String urgency;

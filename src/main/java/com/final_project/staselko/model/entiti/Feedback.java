@@ -28,6 +28,7 @@ public class Feedback implements Serializable {
     @JoinColumn(name = "USER_ID")
     private User user;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TICKET_ID")
     private Ticket ticket;

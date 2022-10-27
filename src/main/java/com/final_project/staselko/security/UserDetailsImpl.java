@@ -2,10 +2,12 @@ package com.final_project.staselko.security;
 
 import com.final_project.staselko.model.entiti.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 public class UserDetailsImpl implements UserDetails {
 
@@ -21,7 +23,9 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return new ArrayList<>();
+        String userRole = user.getRole_id().name();
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole);
+        return Collections.singletonList(authority);
     }
 
     @Override

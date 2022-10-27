@@ -34,7 +34,7 @@ public abstract class HibernateDao<T extends Serializable> {
     }
 
     public Optional<T> findById(final long id) {
-        Optional<T> entiti = Optional.empty();
+        Optional<T> entiti;
         entiti = Optional.ofNullable(getCurrentSession().get(modelClass, id));
         return entiti;
     }
@@ -56,23 +56,33 @@ public abstract class HibernateDao<T extends Serializable> {
         getCurrentSession().delete(entity);
     }
 
-    public T getByStringParam(String parameter, String value) {
+    public T getByParam(String parameter, Object value) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<T> cq = builder.createQuery(modelClass);
         Root<T> root = cq.from(modelClass);
-        ParameterExpression<String> p = builder.parameter(String.class);
+        ParameterExpression<Object> p = builder.parameter(Object.class);
         cq.select(root).where(builder.equal(root.get(parameter), p));
         TypedQuery<T> query = entityManager.createQuery(cq);
         query.setParameter(p, value);
         return query.getResultStream().findFirst().orElse(null);
     }
 
-    public List<T> getAllByParam(String parameter, String value){
+    public List<T> getAllByParam(String parameter, Object value){
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<T> cq = builder.createQuery(modelClass);
         Root<T> root = cq.from(modelClass);
-        ParameterExpression<String> p = builder.parameter(String.class);
+        ParameterExpression<Object> p = builder.parameter(Object.class);
         cq.select(root).where(builder.equal(root.get(parameter), p));
+        TypedQuery<T> query = entityManager.createQuery(cq);
+        query.setParameter(p, value);
+        return query.getResultList();
+    }
+    public List<T> getAllByParams(String parameter, String parameter2, Object value){
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<T> cq = builder.createQuery(modelClass);
+        Root<T> root = cq.from(modelClass);
+        ParameterExpression<Object> p = builder.parameter(Object.class);
+        cq.select(root).where(builder.or(builder.equal(root.get(parameter), p), builder.equal(root.get(parameter2), p)));
         TypedQuery<T> query = entityManager.createQuery(cq);
         query.setParameter(p, value);
         return query.getResultList();

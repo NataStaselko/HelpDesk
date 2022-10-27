@@ -18,6 +18,7 @@ public class UserConverterImpl implements UserConverter {
         PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         user.setEmail(userDto.getEmail());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        user.setRole_id(userDto.getRole_id());
         return user;
     }
     @Override

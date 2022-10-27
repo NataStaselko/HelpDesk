@@ -18,7 +18,7 @@ public class CategoryDaoImpl extends HibernateDao<Category> implements CategoryD
     @Override
     public Optional<Category> findByName(String name) {
         Optional<Category> category = Optional.empty();
-        category = Optional.ofNullable(getByStringParam("name", name));
+        category = Optional.ofNullable(getByParam("name", name));
         return category;
     }
 }
